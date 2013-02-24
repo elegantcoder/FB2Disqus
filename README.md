@@ -3,7 +3,7 @@ FB2Disqus
 
 Facebook Social Comment to Disqus Exporter
 
-Migrate every single messages, the authors' name, and authors' facebook link.
+Migrate every single message, the author's name, and author's facebook link.
 
 
 ## Usage
