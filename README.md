@@ -3,9 +3,12 @@ FB2Disqus
 
 Facebook Social Comment to Disqus Exporter
 
+Migrate every single messages, the authors' name, and authors' facebook link.
+
+
 ## Usage
 
-1. change settings in export.php
+1. Change the settings in export.php
 ```php
 #!/bin/env php
 <?php
@@ -29,7 +32,7 @@ FB2Disqus::run(array(
 ));
 ```
 
-2. run
+2. Run
 ```sh
 $ ./export.php 
 ```
