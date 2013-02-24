@@ -1,0 +1,6 @@
+[submodule "facebook-php-sdk"]
+	path = facebook-php-sdk
+	url = git://github.com/facebook/facebook-php-sdk.git
+[submodule "disqus-php"]
+	path = disqus-php
+	url = git://github.com/disqus/disqus-php.git
