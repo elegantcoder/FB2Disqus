@@ -1,4 +1,4 @@
-#!/bin/env php
+#!/usr/bin/env php
 <?php
 require 'FB2Disqus.php';
 FB2Disqus::run(array(
