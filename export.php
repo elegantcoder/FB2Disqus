@@ -16,5 +16,8 @@ FB2Disqus::run(array(
   'commentURLs' => array(
     // disqus thread id => comment url(facebook)
     '322626171' => 'http://elegantcoder.com/pro-ft-engineer'
-  )
+  ),
+
+  // migrated comments default state. unapproved, approved, spam, killed
+  'defaultState' => 'approved'
 ));

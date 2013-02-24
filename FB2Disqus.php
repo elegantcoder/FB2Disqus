@@ -1,6 +1,6 @@
 <?php
 require 'facebook-sdk/src/facebook.php';
-require 'disqus-php/disqusapi/disqusapi.php';
+require 'disqus-php-sdk/disqusapi/disqusapi.php';
 
 class FB2Disqus {
   private $_fb = null;
@@ -9,20 +9,20 @@ class FB2Disqus {
 
   private $_dsq = null;
   private $_dsqSecret = null;
-  private $_dsqForumId = null;
 
   private $_comments = array();
   private $_users = array();
 
-  function __construct ($options) {
+  private function __construct ($options) {
     $this->_fbAppId = $options['fbAppId'];
     $this->_fbSecret = $options['fbSecret'];
 
     $this->_dsqSecret = $options['dsqSecret'];
-    $this->_dsqorumId = $options['dsqForumId'];
 
     $this->_emailForAnonymous = $options['emailForAnonymous'];
     $this->_commentURLs = $options['commentURLs'];
+
+    $this->_defaultState = $options['defaultState'];
 
     $this->_fb = new Facebook(array('appId' => $this->_fbAppId, 'secret' => $this->_fbSecret));
     $this->_dsq = new DisqusAPI($this->_dsqSecret);
@@ -30,7 +30,6 @@ class FB2Disqus {
 
   public static function run($options) {
     $fb2disqus = new FB2Disqus($options);
-    // $fb2disqus->disqustest();
     foreach ($options['commentURLs'] as $thread => $url) {
       $fb2disqus->fetchComments($url);
       $fb2disqus->collectUsers($fb2disqus->_comments[$fb2disqus->_currentComment]);
@@ -84,7 +83,7 @@ class FB2Disqus {
           'author_name' => $user['name'],
           'author_email' => !$user['username']? $this->_emailForAnonymous : $user['username'].'@facebook.com',
           'author_url' => $author_url,
-          'state' => 'approved',
+          'state' => $this->_defaultState,
           'date' => strtotime($comment['created_time']),
         ));
         try {
@@ -93,7 +92,6 @@ class FB2Disqus {
           var_export($e);
           var_export($comment);
         }
-        
       }
     }
   }
