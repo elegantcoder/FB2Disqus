@@ -4,7 +4,8 @@ FB2Disqus
 Facebook Social Comment to Disqus Exporter
 
 ## Usage
-export.php
+
+1. change settings in export.php
 ```php
 #!/bin/env php
 <?php
@@ -28,3 +29,7 @@ FB2Disqus::run(array(
 ));
 ```
 
+2. run
+```sh
+$ ./export.php 
+```
