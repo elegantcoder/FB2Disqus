@@ -10,7 +10,7 @@ Migrate every single message, the author's name, and author's facebook link.
 
 1. Change the settings in export.php
 ```php
-#!/bin/env php
+#!/usr/bin/env php
 <?php
 require 'FB2Disqus.php';
 FB2Disqus::run(array(
