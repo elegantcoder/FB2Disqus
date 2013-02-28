@@ -34,8 +34,7 @@ class FB2Disqus {
       $fb2disqus->fetchComments($url);
       $fb2disqus->collectUsers($fb2disqus->_comments[$fb2disqus->_currentComment]);
       $fb2disqus->fetchUsers();
-      $fb2disqus->convert($fb2disqus->_comments[$fb2disqus->_currentComment], $thread);
-      $fb2disqus->post();
+      $fb2disqus->convertAndPost($fb2disqus->_comments[$fb2disqus->_currentComment], $thread);
      }
   }
 
@@ -67,7 +66,8 @@ class FB2Disqus {
     }
   }
 
-  private function convert ($res, $thread, $parent = null) {    if ($res['comments']) {
+  private function convertAndPost ($res, $thread, $parent = null) {
+    if ($res['comments']) {
       foreach($res['comments']['data'] as $comment) {        
         $user = $this->_users[$comment['from']['id']];
         if ($user['link']) {
